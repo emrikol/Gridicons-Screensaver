@@ -117,16 +117,17 @@ jQuery( function( $ ) {
 		logo = Math.floor( Math.random() * icons.length );
 
 		for ( n = 1; n <= ( columns * rows ); n++ ) {
-			//box = $('<div/>');
+			/*
+			// I'd prefer to use programmatically created DOM nodes here, but jQuery doesn't seem to play nice with SVG sometimes
+			var box = $('<svg class="gridicon" />');
+			box.attr( 'width', item_size / 2 + 'px' );
+			box.attr( 'height', item_size / 2 + 'px' );
+			box.addClass( gridicon );
+			box.append( '<use xmlns:xlink="http://www.w3.org/1999/xlink" />' );
+			box.find( 'use' ).attr( 'xlink:href', 'assets/gridicons.svg#' + gridicon );
+			*/
 			gridicon = icons[ Math.floor( Math.random() * icons.length ) ];
-			box = $('<svg/>');
-			box.attr( 'width', item_size );
-			box.attr( 'height', item_size );
-			box.addClass( 'gridicon ' + gridicon );
-			box.append( '<use/>' );
-			box.find( 'use' ).attr( 'xlink:href', '#' + gridicon );
-			var newicon = '<svg class="gridicon ' + gridicon + '" width="24px" height="24px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/gridicons.svg#' + gridicon + '"></use></svg>'
-			box = $(newicon);
+			var box = $('<svg class="gridicon ' + gridicon + '" width="' + item_size / 2 + 'px" height="' + item_size / 2 + 'px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/gridicons.svg#' + gridicon + '"></use></svg>');
 			container.append( box );
 		}
 	}
